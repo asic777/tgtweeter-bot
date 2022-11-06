@@ -85,7 +85,7 @@ func fromEnv(cfg *Config) error {
 }
 
 func setUpViper() error {
-	viper.AddConfigPath("configs")
+	viper.AddConfigPath("./configs")
 	viper.SetConfigName("main")
 
 	return viper.ReadInConfig()
