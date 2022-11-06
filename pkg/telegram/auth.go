@@ -3,8 +3,8 @@ package telegram
 import (
 	"context"
 	"fmt"
+	"github.com/asic777/tgtweeter-bot/pkg/storage"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
-	"github.com/zhashkevych/telegram-pocket-bot/pkg/storage"
 )
 
 func (b *Bot) initAuthorizationProcess(message *tgbotapi.Message) error {
