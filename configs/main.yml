@@ -1,6 +1,6 @@
-db_file: "bot.db"
+db_file: "mask.db"
 
-bot_url: "https://t.me/getpocket_client_bot"
+bot_url: "https://t.me/gotgtwitter_bot"
 
 messages:
   response:

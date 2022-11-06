@@ -1,10 +1,10 @@
 .PHONY:
 
 build:
-	go build -o ./.bin/bot cmd/bot/main.go
+	go build -o ./.bin/bot.exe cmd/bot/main.go
 
 run: build
-	./.bin/bot
+	./.bin/bot.exe
 
 build-image:
 	docker build -t asic777/bot:0.1 .

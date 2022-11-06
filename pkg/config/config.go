@@ -1,6 +1,10 @@
 package config
 
-import "github.com/spf13/viper"
+import (
+	"fmt"
+
+	"github.com/spf13/viper"
+)
 
 type Messages struct {
 	Responses
@@ -21,14 +25,10 @@ type Errors struct {
 }
 
 type Config struct {
-	TelegramToken     string
-	PocketConsumerKey string
-	AuthServerURL     string
-
-	BotURL     string `mapstructure:"bot_url"`
-	BoltDBFile string `mapstructure:"db_file"`
-
-	Messages Messages
+	TelegramToken string
+	BotURL        string `mapstructure:"bot_url"`
+	BoltDBFile    string `mapstructure:"db_file"`
+	Messages      Messages
 }
 
 func Init() (*Config, error) {
@@ -69,16 +69,16 @@ func fromEnv(cfg *Config) error {
 		return err
 	}
 	cfg.TelegramToken = viper.GetString("token")
+	fmt.Println(cfg.TelegramToken)
+	// if err := viper.BindEnv("consumer_key"); err != nil {
+	// 	return err
+	// }
+	// cfg.PocketConsumerKey = viper.GetString("consumer_key")
 
-	if err := viper.BindEnv("consumer_key"); err != nil {
-		return err
-	}
-	cfg.PocketConsumerKey = viper.GetString("consumer_key")
-
-	if err := viper.BindEnv("auth_server_url"); err != nil {
-		return err
-	}
-	cfg.AuthServerURL = viper.GetString("auth_server_url")
+	// if err := viper.BindEnv("auth_server_url"); err != nil {
+	// 	return err
+	// }
+	// cfg.AuthServerURL = viper.GetString("auth_server_url")
 
 	return nil
 }

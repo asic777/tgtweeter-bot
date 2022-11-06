@@ -1,9 +1,8 @@
 package telegram
 
 import (
-	"context"
+	// "context"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
-	"github.com/zhashkevych/go-pocket-sdk"
 	"net/url"
 )
 
@@ -21,13 +20,13 @@ func (b *Bot) handleCommand(message *tgbotapi.Message) error {
 }
 
 func (b *Bot) handleStartCommand(message *tgbotapi.Message) error {
-	_, err := b.getAccessToken(message.Chat.ID)
-	if err != nil {
-		return b.initAuthorizationProcess(message)
-	}
+	// _, err := b.getAccessToken(message.Chat.ID)
+	// if err != nil {
+	// 	return b.initAuthorizationProcess(message)
+	// }
 
 	msg := tgbotapi.NewMessage(message.Chat.ID, b.messages.Responses.AlreadyAuthorized)
-	_, err = b.bot.Send(msg)
+	_, err := b.bot.Send(msg)
 	return err
 }
 
@@ -38,17 +37,17 @@ func (b *Bot) handleUnknownCommand(message *tgbotapi.Message) error {
 }
 
 func (b *Bot) handleMessage(message *tgbotapi.Message) error {
-	accessToken, err := b.getAccessToken(message.Chat.ID)
-	if err != nil {
-		return b.initAuthorizationProcess(message)
-	}
+	// accessToken, err := b.getAccessToken(message.Chat.ID)
+	// if err != nil {
+	// 	return b.initAuthorizationProcess(message)
+	// }
 
-	if err := b.saveLink(message, accessToken); err != nil {
-		return err
-	}
+	// if err := b.saveLink(message, accessToken); err != nil {
+	// 	return err
+	// }
 
 	msg := tgbotapi.NewMessage(message.Chat.ID, b.messages.Responses.LinkSaved)
-	_, err = b.bot.Send(msg)
+	_, err := b.bot.Send(msg)
 	return err
 }
 
@@ -57,12 +56,12 @@ func (b *Bot) saveLink(message *tgbotapi.Message, accessToken string) error {
 		return invalidUrlError
 	}
 
-	if err := b.client.Add(context.Background(), pocket.AddInput{
-		URL:         message.Text,
-		AccessToken: accessToken,
-	}); err != nil {
-		return unableToSaveError
-	}
+	// if err := b.client.Add(context.Background(), pocket.AddInput{
+	// 	URL:         message.Text,
+	// 	AccessToken: accessToken,
+	// }); err != nil {
+	// 	return unableToSaveError
+	// }
 
 	return nil
 }
