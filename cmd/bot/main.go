@@ -1,14 +1,14 @@
 package main
 
 import (
+	"github.com/asic777/tgtweeter-bot/pkg/config"
+	"github.com/asic777/tgtweeter-bot/pkg/server"
+	"github.com/asic777/tgtweeter-bot/pkg/storage"
+	"github.com/asic777/tgtweeter-bot/pkg/storage/boltdb"
+	"github.com/asic777/tgtweeter-bot/pkg/telegram"
 	"github.com/boltdb/bolt"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 	"github.com/zhashkevych/go-pocket-sdk"
-	"github.com/zhashkevych/telegram-pocket-bot/pkg/config"
-	"github.com/zhashkevych/telegram-pocket-bot/pkg/server"
-	"github.com/zhashkevych/telegram-pocket-bot/pkg/storage"
-	"github.com/zhashkevych/telegram-pocket-bot/pkg/storage/boltdb"
-	"github.com/zhashkevych/telegram-pocket-bot/pkg/telegram"
 	"log"
 )
 
