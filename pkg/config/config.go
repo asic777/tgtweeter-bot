@@ -65,11 +65,11 @@ func unmarshal(cfg *Config) error {
 }
 
 func fromEnv(cfg *Config) error {
-	if err := viper.BindEnv("token1"); err != nil {
+	if err := viper.BindEnv("token"); err != nil {
 		fmt.Println(err)
 		return err
 	}
-	cfg.TelegramToken = viper.GetString("token1")
+	cfg.TelegramToken = viper.GetString("token")
 	fmt.Println(cfg.TelegramToken)
 	// if err := viper.BindEnv("consumer_key"); err != nil {
 	// 	return err
